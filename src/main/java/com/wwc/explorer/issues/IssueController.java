@@ -1,6 +1,7 @@
 package com.wwc.explorer.issues;
 
 import org.eclipse.egit.github.core.RepositoryIssue;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,10 @@ import java.util.List;
 
 
 @RestController
-public class IssuesController {
+public class IssueController {
+
+    @Autowired
+    IssueService issueService;
 
     @RequestMapping("/")
     public String index() {
@@ -20,12 +24,9 @@ public class IssuesController {
     }
 
     @RequestMapping("/issues")
-    @ResponseBody
-    public List<RepositoryIssue> issues() throws java.io.IOException {
+    public List<Issue> issues() {
 
-        Issues list = new Issues("java");
-
-        return list.getIssues();
+        return issueService.getAllIssues();
     }
 
 }
