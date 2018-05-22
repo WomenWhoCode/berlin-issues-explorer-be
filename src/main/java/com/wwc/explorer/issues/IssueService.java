@@ -11,10 +11,10 @@ public class IssueService {
 
     private List<Issue> issues = new ArrayList<>(Arrays.asList(
             new Issue(
+                    "12345",
                     "Serverless Application Repository",
                     new ArrayList<String>(Arrays.asList("good-first-issue")),
                     "aws-lambda-attachment-extractor",
-                    new ArrayList<String>(Arrays.asList("easy")),
                     "https://github.com/martysweet/aws-lambda-attachment-extractor/issues/2",
                     "Python")));
 
