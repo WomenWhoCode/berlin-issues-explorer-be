@@ -14,6 +14,7 @@ public class IssueService {
                     "12345",
                     "Serverless Application Repository",
                     new ArrayList<String>(Arrays.asList("good-first-issue")),
+                    "https://github.com/martysweet/aws-lambda-attachment-extractor/issues/2",
                     "aws-lambda-attachment-extractor",
                     "https://github.com/martysweet/aws-lambda-attachment-extractor/issues/2",
                     "Python")));

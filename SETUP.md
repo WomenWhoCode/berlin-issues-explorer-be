@@ -47,4 +47,12 @@ There are many cloud IDEs, but only few flexible enough and still not requiring 
   * send your username to berlinhacknights@womenwhocode.com, so that we add you to the project
   * once you get confirmation that you are added to the project, use `wwc-issues-explorer` workspace. All prerequisites are installed (java8, gradle build tool, git).
   * detailed information how to use cloud IDE and run the project there for the first time can be found [here](cloud_ide_setup.pdf) 
-  
+
+
+## Add  GITHUB_ACCESS_TOKEN
+
+You can find your token at https://github.com/settings/tokens. Then run the following command in the terminal with your token. < and > are not part of the actual token.
+
+    export GITHUB_ACCESS_TOKEN=<Your Token Here>>
+
+You can use 'printenv' to check if it worked. If you run Spring from your IDE, don't forget to explicitly include the environment variable and its value in your run configuration.
