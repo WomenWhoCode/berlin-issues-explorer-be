@@ -1,25 +1,31 @@
 package com.wwc.explorer.issues;
 
+import com.google.gson.Gson;
+import com.wwc.explorer.github.Response;
+import com.wwc.explorer.query.QueryIssuesByLabel;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 @Service
 public class IssueService {
 
-    private List<Issue> issues = new ArrayList<>(Arrays.asList(
-            new Issue(
-                    "12345",
-                    "Serverless Application Repository",
-                    new ArrayList<String>(Arrays.asList("good-first-issue")),
-                    "https://github.com/martysweet/aws-lambda-attachment-extractor/issues/2",
-                    "aws-lambda-attachment-extractor",
-                    "https://github.com/martysweet/aws-lambda-attachment-extractor/issues/2",
-                    "Python")));
+    @Value("${GITHUB_ACCESS_TOKEN}")
+    private String githubAccessToken;
 
-    public List<Issue> getAllIssues() {
-        return issues;
+    public com.wwc.explorer.github.Response getAllIssues() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("Authorization", "Bearer " + githubAccessToken);
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<String> requestEntity = new HttpEntity<String>(QueryIssuesByLabel.queryByLabelGoodFirstIssue(), headers);
+        ResponseEntity<Response> response = restTemplate.exchange("https://api.github.com/graphql", HttpMethod.POST, requestEntity, Response.class);
+
+        return response.getBody();
     }
 }
