@@ -6,15 +6,17 @@ public class Issue {
     private String id;
     private String title;
     private List<String> labels;
+    private String url;
     private String repositoryTitle;
     private String repositoryUrl;
     private String language;
 
-    public Issue(String id, String title, List<String> labels, String repositoryTitle,
-                 String repositoryUrl, String language) {
+    public Issue(String id, String title, List<String> labels, String url,
+                 String repositoryTitle, String repositoryUrl, String language) {
         this.id = id;
         this.title = title;
         this.labels = labels;
+        this.url = url;
         this.repositoryTitle = repositoryTitle;
         this.repositoryUrl = repositoryUrl;
         this.language = language;
@@ -42,6 +44,14 @@ public class Issue {
 
     public void setLables(List<String> labels) {
         this.labels = labels;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getRepositoryTitle() {
