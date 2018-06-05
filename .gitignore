@@ -50,3 +50,7 @@ local.properties
 *.ipr
 *.iws
 .idea/
+gradlew.bat
+gradle/wrapper/gradle-wrapper.properties
+gradlew
+out/
