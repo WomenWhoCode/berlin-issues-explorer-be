@@ -1,6 +1,17 @@
 package com.wwc.explorer.github;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Response {
+    private Data data;
+
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
+    }
 
     public class Data {
         private Search search;
@@ -15,6 +26,7 @@ public class Response {
     }
 
     public class Search {
+        @JsonProperty("edges")
         private SearchEdge[] searchEdges;
 
         public SearchEdge[] getSearchEdges() {
@@ -28,6 +40,7 @@ public class Response {
 
     public class SearchEdge {
         private String cursor;
+        @JsonProperty("node")
         private SearchNode searchNode;
         private Repository repository;
 
@@ -61,6 +74,7 @@ public class Response {
         private String title;
         private String url;
         private String state;
+        @JsonProperty("labels")
         private Label label;
 
         public String getId() {
@@ -105,6 +119,7 @@ public class Response {
     }
 
     public class Label {
+        @JsonProperty("edges")
         private LabelEdge labelEdge;
 
         public LabelEdge getLabelEdge() {
@@ -117,6 +132,7 @@ public class Response {
     }
 
     public class LabelEdge {
+        @JsonProperty("node")
         private LabelNode[] labelNode;
 
         public LabelNode[] getLabelNode() {
