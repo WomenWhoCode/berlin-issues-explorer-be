@@ -5,6 +5,7 @@ import com.wwc.explorer.github.Response;
 import com.wwc.explorer.query.QueryIssuesByLabel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,6 +17,8 @@ public class IssueService {
     @Value("${GITHUB_ACCESS_TOKEN}")
     private String githubAccessToken;
 
+    // Scheduled to run every three hours
+    @Scheduled(cron = "0 */3 * * *")
     public com.wwc.explorer.github.Response getAllIssues() {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
