@@ -39,16 +39,6 @@ If, however, you want to be more involved in java ecosystem, it would be good th
     `gradle build && java -jar build/libs/berlin-issues-explorer-be-0.1.0.jar`
 
 
-## Alternatively, use cloud IDE
-
-There are many cloud IDEs, but only few flexible enough and still not requiring credit card for registration. We chose *cloudtasty* but we are open for suggestions:)
-
-  * create free account at [codetasty](https://codetasty.com/)
-  * send your username to berlinhacknights@womenwhocode.com, so that we add you to the project
-  * once you get confirmation that you are added to the project, use `wwc-issues-explorer` workspace. All prerequisites are installed (java8, gradle build tool, git).
-  * detailed information how to use cloud IDE and run the project there for the first time can be found [here](cloud_ide_setup.pdf) 
-
-
 ## Add  GITHUB_ACCESS_TOKEN
 
 You can find your token at https://github.com/settings/tokens. Then run the following command in the terminal with your token. < and > are not part of the actual token.
