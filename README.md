@@ -52,13 +52,64 @@ In the next phase project should also be able to display info how much activity 
 
 ![project components](project_overview.png)
 
-Data about github repositories of opensource projects and currently open issues of our interest (issues which are good for beginners) should be fetched from github through github REST api and stored in relational database.
+Data about github repositories of opensource projects and currently open issues of our interest (issues which are good for beginners) should be fetched from github through github GraphQL api and stored in relational database.
 
-Link to GitHub API: https://developer.github.com/v3/
+Link to GitHub GraphQL API: https://developer.github.com/v4/
+
+Bellow is an example of the query which is fetching data about issues. You can try it out at Github GraphQL API Explorer: https://developer.github.com/v4/explorer/
+
+Place the query in the `GraphiQL` box:
+```
+query queryIssue($labelName: String!) {
+ search( query:$labelName, type: ISSUE, last:100){
+    edges{
+      node{
+        ... on Issue{
+          id
+          title
+          url
+          labels(last:100) {
+            edges {
+              node {
+                name
+              }
+            }
+          }
+          repository {
+            name
+            url
+            repositoryTopics(last:100) {
+              edges {
+                node{
+                  topic {
+                    name
+                  }
+                }
+              }
+            }
+            languages(first:100) {
+              edges {
+                node {
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}
+}
+```
+And variables in the `QUERY VARIABLES` box:
+```
+{"labelName" : "label:\"good first issue\""}
+```
 
 Our application (REST api) should serve information about those beginner friendly issues and our [frontend project](https://github.com/WomenWhoCode/berlin-issues-explorer-fe) should use our API.
 
-Currently, there is only a skeleton for REST API (dummy /index endpoint) created using [spring boot](https://projects.spring.io/spring-boot/). 
+App is created using [spring boot](https://projects.spring.io/spring-boot/). 
+
 List of tasks to be tackled next is in [issues section](https://github.com/WomenWhoCode/berlin-issues-explorer-be/issues).
 There is a `newcomer` label attached when issue is good for beginners.  
 
