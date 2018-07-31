@@ -108,8 +108,6 @@ And variables in the `QUERY VARIABLES` box:
 
 Our application (REST api) should serve information about those beginner friendly issues and our [frontend project](https://github.com/WomenWhoCode/berlin-issues-explorer-fe) should use our API.
 
-App is created using [spring boot](https://projects.spring.io/spring-boot/). 
-
 List of tasks to be tackled next is in [issues section](https://github.com/WomenWhoCode/berlin-issues-explorer-be/issues).
 There is a `newcomer` label attached when issue is good for beginners.  
 
