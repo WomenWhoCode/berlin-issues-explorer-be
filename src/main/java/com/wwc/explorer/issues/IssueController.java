@@ -23,4 +23,28 @@ public class IssueController {
         return issueService.getAllIssues();
     }
 
+    @RequestMapping("/issues/ufg")
+    public Response upForGrabs() {
+        return issueService.getUpForGrabs();
+    }
+
+    @RequestMapping("/issues/bf")
+    public Response beginnerFriendly() {
+        return issueService.getBeginnerFriendly();
+    }
+
+    @RequestMapping("/issues/fto")
+    public Response firstTimersOnly() {
+        return issueService.getFirstTimersOnly();
+    }
+
+    @RequestMapping("/issues/newcomer")
+    public Response newComer() {
+        return issueService.getNewComer();
+    }
+
+    @RequestMapping("/issues/jumpin")
+    public Response jumpIn() {
+        return issueService.getJumpIn();
+    }
 }
